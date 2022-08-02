@@ -59,7 +59,7 @@ function setActiveSection(){
     // 1.create list elements 
     for(let i = 0; i < sections.length; i++){
         let listItem = document.createElement('li');
-        listItem.textContent = sections[i].getAttribute('data-nav');
+        listItem.innerHTML = `<a>${sections[i].getAttribute('data-nav')}</a>`
         listItem.setAttribute('class','menu__link');
         fragment.appendChild(listItem);
     }
