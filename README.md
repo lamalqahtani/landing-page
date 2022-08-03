@@ -5,7 +5,7 @@
 * [Project Description](#project-description)
 * [Instructions](#instructions)
 * [File and Folders Structure](#file-and-folders-structure)
-* [Installation](#installation)
+* [Deployment](#deployment)
 
 ## Project Description
 A pre built static landing page from Udacity Front-End nanodegree program to be converted by students to an interactive landing page using Javascript.
@@ -32,5 +32,5 @@ README.md
 
 ```
 
-## Installation 
-you can use or access this project by visiting the following link [Deployed Version](https://lamalqahtani.github.io/landing-page/)
+## Deployment 
+We deployed the project using github pages, you can access it by visiting the following link [Deployed Version](https://lamalqahtani.github.io/landing-page/)
