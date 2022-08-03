@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-* [Project Description](#Project Description)
+* [Project Description](#project-description)
 * [Instructions](#instructions)
-* [File and Folders Structure](#File and Folders Structure)
-* [Installation](#Installation)
+* [File and Folders Structure](#file-and-folders-structure)
+* [Installation](#installation)
 
 ## Project Description
 A pre built static landing page from Udacity Front-End nanodegree program to be converted by students to an interactive landing page using Javascript.
