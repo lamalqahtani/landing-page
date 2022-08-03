@@ -73,7 +73,7 @@ function scrollToSection(e){
     let elm = e.target;
     let textLength = elm.textContent.length;
     const sectionElement = document.querySelector(`#section${elm.textContent[textLength-1]}`);
-    sectionElement.scrollIntoView({behavior: 'smooth'});
+    sectionElement.scrollIntoView({block: 'end', behavior: 'smooth'});
     // let sectionPosition = sectionElement.getBoundingClientRect();
     // console.log(`top: ${sectionPosition.top}`);
     // console.log(`left: ${sectionPosition.left}`);
