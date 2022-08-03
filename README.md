@@ -33,4 +33,4 @@ README.md
 ```
 
 ## Installation 
-you can use or access this project by visiting the following link [Deployed Version](www.google.com)
+you can use or access this project by visiting the following link [Deployed Version](https://lamalqahtani.github.io/landing-page/)
