@@ -39,7 +39,7 @@ const viewportWidth20 = (window.innerHeight*20)/100;
 // 2.when user scrolls check the position of the sections one bu one to look for the one the user is at.
 function setActiveSection(){
     for(let i = 0; i< sections.length; i++){
-        console.log(` section ${i} : ${sections[i].getBoundingClientRect().top}`);
+        // console.log(` section ${i} : ${sections[i].getBoundingClientRect().top}`);
         if(sections[i].getBoundingClientRect().top >= viewportWidth20){
             sections[i].setAttribute('class','your-active-class');
         }else{
@@ -70,7 +70,7 @@ function setActiveSection(){
 document.addEventListener('scroll', setActiveSection );
 
 // Scroll to anchor ID using scrollTO event
-
+    // I did not understand what is required??
 
 
 /**
@@ -80,20 +80,37 @@ document.addEventListener('scroll', setActiveSection );
 */
 
 // Build menu 
+    //what do you mean by menu? are you refering to the nav bar?
+
+    // ------------------------------
+            // window.scrollTo({
+            //     top: 100,
+            //     left: 100,
+            //     behavior: 'smooth'
+            //   });
+    // ------------------------------
 
 // Scroll to section on link click
+    list.addEventListener('click',(e)=>{
+        // e.preventDefault();
+        let elm = e.target;
+        let textLength = elm.textContent.length;
+        const sectionElement = document.querySelector(`#section${elm.textContent[textLength-1]}`);
+        sectionElement.scrollIntoView({behavior: 'smooth'});
+        // let sectionPosition = sectionElement.getBoundingClientRect();
+        // console.log(`top: ${sectionPosition.top}`);
+        // console.log(`left: ${sectionPosition.left}`);
+        // window.scrollTo({
+        //         top: sectionPosition.top,
+        //         left: sectionPosition.left,
+        //         behavior: 'smooth'
+        //       });
+        // console.log(`top: ${sectionPosition.top}`);
+        // console.log(`left: ${sectionPosition.left}`);
+    });
 
 // Set sections as active
+    // we alrready covered this part above, didn't we?
 
-
-
-
-
-
-
-//tests
-    // document.addEventListener('click',()=>{
-    //     sections[2].scrollIntoView();
-    // })
 
 
