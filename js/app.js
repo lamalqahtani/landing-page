@@ -66,6 +66,26 @@ function setActiveSection(){
     // 2.appent list elements to ul using fragment
     list.appendChild(fragment);
 
+
+//scroll to section by clicking nav bar menu.
+function scrollToSection(e){
+    // e.preventDefault();
+    let elm = e.target;
+    let textLength = elm.textContent.length;
+    const sectionElement = document.querySelector(`#section${elm.textContent[textLength-1]}`);
+    sectionElement.scrollIntoView({behavior: 'smooth'});
+    // let sectionPosition = sectionElement.getBoundingClientRect();
+    // console.log(`top: ${sectionPosition.top}`);
+    // console.log(`left: ${sectionPosition.left}`);
+    // window.scrollTo({
+    //         top: sectionPosition.top,
+    //         left: sectionPosition.left,
+    //         behavior: 'smooth'
+    //       });
+    // console.log(`top: ${sectionPosition.top}`);
+    // console.log(`left: ${sectionPosition.left}`);
+}
+
 // Add class 'active' to section when near top of viewport
 document.addEventListener('scroll', setActiveSection );
 
@@ -91,23 +111,7 @@ document.addEventListener('scroll', setActiveSection );
     // ------------------------------
 
 // Scroll to section on link click
-    list.addEventListener('click',(e)=>{
-        // e.preventDefault();
-        let elm = e.target;
-        let textLength = elm.textContent.length;
-        const sectionElement = document.querySelector(`#section${elm.textContent[textLength-1]}`);
-        sectionElement.scrollIntoView({behavior: 'smooth'});
-        // let sectionPosition = sectionElement.getBoundingClientRect();
-        // console.log(`top: ${sectionPosition.top}`);
-        // console.log(`left: ${sectionPosition.left}`);
-        // window.scrollTo({
-        //         top: sectionPosition.top,
-        //         left: sectionPosition.left,
-        //         behavior: 'smooth'
-        //       });
-        // console.log(`top: ${sectionPosition.top}`);
-        // console.log(`left: ${sectionPosition.left}`);
-    });
+    list.addEventListener('click',scrollToSection);
 
 // Set sections as active
     // we alrready covered this part above, didn't we?
