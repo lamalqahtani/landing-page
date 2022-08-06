@@ -26,27 +26,38 @@ const fragment = document.createDocumentFragment();
 const sections = document.querySelectorAll('section');
 let list = document.querySelector('#navbar__list');
 
-
-
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
 
-
-// 1.loop inside the list of sections
-// 2.when user scrolls check the position of the sections one bu one to look for the one the user is at.
+// setActiveSection will be triggered when user scrolls.
+// it will calculate the position of a section, if its showen in the viewport it will set its class attrebute to active.
+// while changing the class of a section it will also change the class the coresponsing nav bar li class to active.
 function setActiveSection(){
     for(let i = 0; i< sections.length; i++){
-        if(sections[i].getBoundingClientRect().top >= 0 && sections[i].getBoundingClientRect().bottom <= window.innerHeight ){
+        if(sections[i].getBoundingClientRect().top >= 0 && (sections[i].getBoundingClientRect().top + (sections[i].getBoundingClientRect().height/2)) <= window.innerHeight ){
             sections[i].setAttribute('class','your-active-class');
+            list.children[i].setAttribute('class', 'menu__link__active');
         }else{
+            list.children[i].setAttribute('class', 'menu__link');
             sections[i].removeAttribute('class');
         }
     }
 }
 
+//scroll to section by clicking nav bar menu.
+function scrollToSection(e){
+    let elm = e.target;
+    let textLength = elm.textContent.length;
+    const sectionElement = document.querySelector(`#section${elm.textContent[textLength-1]}`);
+    sectionElement.scrollIntoView(
+        {block: 'start',
+         inline:'start',
+          behavior: 'smooth'
+        });
+}
 
 /**
  * End Helper Functions
@@ -55,7 +66,9 @@ function setActiveSection(){
 */
 
 // build the nav
-    // 1.create list elements 
+
+function buildNav(){
+    // 1.create li elements to be shown in nav bar.
     for(let i = 0; i < sections.length; i++){
         let listItem = document.createElement('li');
         listItem.innerHTML = `<a>${sections[i].getAttribute('data-nav')}</a>`
@@ -64,29 +77,9 @@ function setActiveSection(){
     }
     // 2.appent list elements to ul using fragment
     list.appendChild(fragment);
-
-
-//scroll to section by clicking nav bar menu.
-function scrollToSection(e){
-    // e.preventDefault();
-    let elm = e.target;
-    let textLength = elm.textContent.length;
-    const sectionElement = document.querySelector(`#section${elm.textContent[textLength-1]}`);
-    sectionElement.scrollIntoView({block: 'end', behavior: 'smooth'});
-    // let sectionPosition = sectionElement.getBoundingClientRect();
-    // console.log(`top: ${sectionPosition.top}`);
-    // console.log(`left: ${sectionPosition.left}`);
-    // window.scrollTo({
-    //         top: sectionPosition.top,
-    //         left: sectionPosition.left,
-    //         behavior: 'smooth'
-    //       });
-    // console.log(`top: ${sectionPosition.top}`);
-    // console.log(`left: ${sectionPosition.left}`);
 }
-
 // Add class 'active' to section when near top of viewport
-document.addEventListener('scroll', setActiveSection );
+
 
 // Scroll to anchor ID using scrollTO event
     // I did not understand what is required??
@@ -99,21 +92,13 @@ document.addEventListener('scroll', setActiveSection );
 */
 
 // Build menu 
-    //what do you mean by menu? are you refering to the nav bar?
-
-    // ------------------------------
-            // window.scrollTo({
-            //     top: 100,
-            //     left: 100,
-            //     behavior: 'smooth'
-            //   });
-    // ------------------------------
+buildNav();
 
 // Scroll to section on link click
-    list.addEventListener('click',scrollToSection);
+list.addEventListener('click',scrollToSection);
 
 // Set sections as active
-    // we alrready covered this part above, didn't we?
+document.addEventListener('scroll', setActiveSection );
 
 
 
